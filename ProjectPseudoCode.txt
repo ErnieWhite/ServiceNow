@@ -1,0 +1,46 @@
+START PROGRAM
+
+1. CHECK if the user provided a folder name as a command-line argument
+   IF NOT:
+       DISPLAY usage message
+       EXIT with error
+
+2. SANITIZE the folder name:
+    - Remove invalid characters: < > : " / \ | ? *
+    - Replace spaces with underscores
+    - PROMPT user to confirm or re-enter the folder name
+    - LOOP until user confirms a valid name
+
+3. DETERMINE the config file path:
+    - Get USERPROFILE environment variable
+    - Build path: USERPROFILE\AppData\Local\FolderManager\config.txt
+    - Ensure the FolderManager directory exists
+
+4. CHECK if config file exists:
+    IF EXISTS:
+        - READ the base directory path from the config file
+    ELSE:
+        - SUGGEST default base directory: USERPROFILE\Projects
+        - PROMPT user to accept or enter a different base directory
+        - SAVE the chosen base directory to the config file
+
+5. BUILD the full path to the target folder:
+    - Combine base directory + sanitized folder name
+
+6. CHECK if the target folder exists:
+    IF NOT:
+        - CREATE the folder
+        - DISPLAY "Directory created"
+    ELSE:
+        - DISPLAY "Directory already exists"
+
+7. CHANGE the current working directory to the new folder
+    IF FAILED:
+        - DISPLAY error message
+        - EXIT with error
+
+8. OPEN the new folder in Windows File Explorer
+
+9. OPEN the Downloads folder in Windows File Explorer
+
+END PROGRAM
