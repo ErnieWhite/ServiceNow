@@ -5,6 +5,7 @@
 #include <windows.h>
 #include <direct.h>
 #include <shlobj.h>
+#include <shlobj_core.h>
 
 #define MAX_PATH_LEN 1024
 #define MAX_NAME_LEN 256
